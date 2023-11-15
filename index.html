@@ -24,13 +24,19 @@
                 <div class="col-10">
                     <div class="mb-3">
                         <label for="todo" class="form-label">Cose da fare</label>
-                        <input type="text" class="form-control" id="todo" v-model="item" @keyup.enter="addItem"/>
+                        <input type="text" class="form-control" id="todo" v-model="item.text" @keyup.enter="addItem" />
                     </div>
                     <button class="btn btn-primary" @click="addItem">Aggiungi</button>
                     <hr>
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between" v-for="(curItem, index) in items" :key="index">
-                            {{curItem }} <span class="text-danger d-inline-block" @click="removeTodo(index)"><i class="fa-solid fa-xmark"></i></span>
+                        <li class="list-group-item d-flex justify-content-between align-items-center" v-for="(curItem, index) in items"
+                            :key="index" :class="curItem.done === true ? 'text-decoration-line-through' : ''">
+                            {{curItem.text }}
+                            <div class="check-cross">
+                                <span class="text-danger d-inline-block" @click="removeTodo(index)"><i
+                                        class="fa-solid fa-xmark"></i></span>
+                                        <span class="text-success d-inline-block ms-3" @click="checkTodo(index)"><i class="fa-solid fa-check"></i></span>
+                            </div>
                         </li>
                     </ul>
                 </div>
