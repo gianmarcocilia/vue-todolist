@@ -9,6 +9,7 @@ const app = createApp({
     methods: {
         addItem: function() {
             this.items.push(this.item)
+            this.item = "";
         },
         removeTodo: function(clickedIndex) {
     
